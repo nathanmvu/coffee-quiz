@@ -10,6 +10,7 @@
 <body>
   <!-- Jumbotron Header -->
   <div class="jumbotron jumbotron-fluid">
+    <button type="button" id="highScoresButton" class="btn btn-link btn-sm w-25 mb-1">High Scores</button>
     <div class="container">
       <h1 class="display-4">How much do you know about coffee?</h1>
       <p class="lead">Let's test your knowledge on coffee and coffee brewing!</p>
@@ -17,7 +18,9 @@
   </div>
 
   <!-- Start -->
-  <button type="button" id="startButton" class="btn btn-lg w-75 mb-1">Start the quiz!</button>
+  <div class="text-center">
+     <button type="button" id="startButton" class="btn btn-lg w-75 mb-1">Start the quiz!</button>
+  </div>
 
   <div hidden id="questionMain">
     <!-- Timer -->
@@ -45,11 +48,6 @@
       <button type="button" id="button3" class="btn btn-primary btn-lg w-75 mb-1"></button>
       <button type="button" id="button4" class="btn btn-primary btn-lg w-75 mb-1"></button>
     </div>
-
-    <!-- Wrong Answer Alert -->
-    <div id="alert1" class="alert alert-light collapse text-center" role="alert">
-      Wrong Answer!
-    </div>
   </div>
 
   <div hidden id="finish">
@@ -63,14 +61,15 @@
 
     <!-- Input Form -->
     <div>
-      <div class="form-group">
+      <div class="form-group ml-2 mr-2">
         <label for="initial">Input your initials:</label>
         <input type="name" class="form-control" id="initial">
       </div>
-      <button id="submit" class="btn btn-primary">Submit</button>
+      <button id="submit" class="btn btn-primary ml-2">Submit</button>
     </div>
   </div>
 
+  <!-- Highscores Page -->
   <div hidden id="highscores">
     <div class="card w-100 mb-2 text-center">
       <div class="card-body">
@@ -80,6 +79,10 @@
         <button id="clear" class="btn btn-primary">Clear</button>
       </div>
     </div>
+  </div>
+  
+  <!-- Wrong Answer Alert -->
+  <div id="alert1" class="alert alert-light text-center" role="alert">
   </div>
   
   <script src="./script.js"></script>

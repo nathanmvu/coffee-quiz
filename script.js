@@ -6,6 +6,7 @@ var button3 = document.querySelector("#button3");
 var button4 = document.querySelector("#button4");
 
 var startButton = document.querySelector("#startButton");
+var highScoresButton = document.querySelector("#highScoresButton");
 var alert = document.querySelector("#alert");
 
 var questionNum = document.querySelector("#questionNumber");
@@ -50,9 +51,19 @@ var finished = false;
 var choice = "";
 
 startButton.addEventListener("click", function() {
-  secondsElapsed = 0;
+    console.log('start');
   startButton.hidden = true;
   questionMain.hidden = false;
+  stopTimer();
+  secondsElapsed = 0;
+  startTimer();
+});
+
+highScoresButton.addEventListener("click", function() {
+  startButton.hidden = true;
+  finish.hidden = true;
+  questionMain.hidden = true;
+  highscores.hidden = false;
 });
 
 submitButton.addEventListener("click", function() {
@@ -69,6 +80,8 @@ back.addEventListener("click", function() {
   questionIndex = 0;
   answerIndex = 0;
   score = 0;
+  questionChange();
+  answerChange();
 });
 
 clear.addEventListener("click", function() {
@@ -130,13 +143,25 @@ function answerChange() {
   } 
 };
 
+function alertAnswer(status) {
+  const alert = document.querySelector("#alert1");
+  alert.textContent = status;
+  setTimeout(function() {
+    alert.textContent = "";
+  }, 1000);
+}
+
 // Function to check answers
 function checkAnswer() {
   if(choice == answersArray[answerIndex-1].answer) {
-    console.log("Correct");
+    alertAnswer('Correct');
     score += 20;
   } else {
+    alertAnswer('Incorrect');
     secondsElapsed += 10;
+    if (secondsElapsed > 60) {
+      endQuiz();
+    }
     if(score >= 8) {
       score -= 8;
     } else {
@@ -153,11 +178,7 @@ var interval;
 var secondsDisplay = document.querySelector("#seconds");
 
 function renderTime() {
-  secondsDisplay.textContent = "Time: " + (totalSeconds - secondsElapsed).toString();
-  if(secondsElapsed == 60) {
-    //alert("Time's Up!");
-    stopTimer();
-  }
+  secondsDisplay.textContent = "Time: " + (Math.max(totalSeconds - secondsElapsed, 0)).toString();
 }
 
 function stopTimer() {
@@ -169,24 +190,28 @@ function startTimer() {
   interval = setInterval(function() {
     secondsElapsed++;
     renderTime();
+    if (secondsElapsed == 60) {
+      endQuiz();
+    }
   }, 1000);
 }
 
-function checkEnd() {
-  if(questionIndex == 4 || secondsElapsed == 60) {
-    finished = true;
-    //alert("Ended quiz");
-
-    questionMain.hidden = true;
-    var finish = document.querySelector("#finish");
-    finish.hidden = false;
-    resultText.innerHTML = "Your score was:" + score;
+function checkEnd() { 
+  if(questionIndex == 4) {
+    endQuiz();
   } 
 }
 
-checkEnd();
+function endQuiz() {
+  questionIndex = 0
+  questionMain.hidden = true;
+  var finish = document.querySelector("#finish");
+  finish.hidden = false;
+  resultText.innerHTML = "Your score was: " + score;
+  stopTimer();
+}
+
 if(finished == false) {
   questionChange();
   answerChange();
 }
-startTimer();

@@ -10,7 +10,7 @@ This is a quiz that briefly tests you on your knowledge of coffee and coffee bre
 * [Deployed Link](https://nathanmvu.github.io/coffee-quiz/)
 * [Usage Demo Video](https://drive.google.com/file/d/1G4CenNWlmtvzXj0OROpieNdSVHWqRdum/view)
 
-![Demo GIF](./Screenshots/coffee-quiz.gif)
+![Demo GIF](./Screenshots/quiz-demo.gif)
 
 ### Usage
 

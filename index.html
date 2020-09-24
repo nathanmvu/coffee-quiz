@@ -16,32 +16,72 @@
     </div>
   </div>
 
-  <!-- Timer -->
-  <div class="d-flex container justify-content-end mb-1">
-    <div class="timer">
-      <div id="hand"></div>
-      <div class="time">
-        <div id="seconds">Time: 60</div>
+  <!-- Start -->
+  <button type="button" id="startButton" class="btn btn-lg w-75 mb-1">Start the quiz!</button>
+
+  <div hidden id="questionMain">
+    <!-- Timer -->
+    <div class="d-flex container justify-content-end mb-1">
+      <div class="timer">
+        <div id="hand"></div>
+        <div class="time">
+          <div id="seconds">Time: 60</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Question Prompt -->
+    <div class="card w-100 mb-2 text-center">
+      <div class="card-body">
+        <h5 id="questionNumber" class="card-title">Question 1</h5>
+        <p id="questionPrompt" class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+      </div>
+    </div>
+
+    <!-- Question Answer Choices -->
+    <div class="text-center">
+      <button type="button" id="button1" class="btn btn-primary btn-lg w-75 mb-1"></button>
+      <button type="button" id="button2" class="btn btn-primary btn-lg w-75 mb-1"></button>
+      <button type="button" id="button3" class="btn btn-primary btn-lg w-75 mb-1"></button>
+      <button type="button" id="button4" class="btn btn-primary btn-lg w-75 mb-1"></button>
+    </div>
+
+    <!-- Wrong Answer Alert -->
+    <div id="alert1" class="alert alert-light collapse text-center" role="alert">
+      Wrong Answer!
+    </div>
+  </div>
+
+  <div hidden id="finish">
+    <!-- Finish Header -->
+    <div class="card w-100 mb-2 text-center">
+      <div class="card-body">
+        <h5 id="resultHead" class="card-title">You Finished!</h5>
+        <p id="resultText" class="card-text"></p>
+      </div>
+    </div>
+
+    <!-- Input Form -->
+    <div>
+      <div class="form-group">
+        <label for="initial">Input your initials:</label>
+        <input type="name" class="form-control" id="initial">
+      </div>
+      <button id="submit" class="btn btn-primary">Submit</button>
+    </div>
+  </div>
+
+  <div hidden id="highscores">
+    <div class="card w-100 mb-2 text-center">
+      <div class="card-body">
+        <h5 id="hsHead" class="card-title">High Scores</h5>
+        <p id="hsText" class="card-text"></p>
+        <button id="back" class="btn btn-primary">Go Back</button>
+        <button id="clear" class="btn btn-primary">Clear</button>
       </div>
     </div>
   </div>
-
-  <!-- Question Prompt -->
-  <div class="card w-100 mb-2 text-center">
-    <div class="card-body">
-      <h5 id="questionNumber" class="card-title">Question 1</h5>
-      <p id="questionPrompt" class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-    </div>
-  </div>
-
-  <!-- Question Answer Choices -->
-  <div class="text-center">
-    <button type="button" id="button1" class="btn btn-primary btn-lg w-75 mb-1"></button>
-    <button type="button" id="button2" class="btn btn-primary btn-lg w-75 mb-1"></button>
-    <button type="button" id="button3" class="btn btn-primary btn-lg w-75 mb-1"></button>
-    <button type="button" id="button4" class="btn btn-primary btn-lg w-75 mb-1"></button>
-  </div>
-
+  
   <script src="./script.js"></script>
 </body>
 </html>

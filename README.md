@@ -1,1 +1,1 @@
-# coffee-quiz
+# personality-quiz
